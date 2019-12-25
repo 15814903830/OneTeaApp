@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".activity.HomeScanActivity">
+    <com.example.oneteaapp.view.StatusBarHeightView
+        app:use_type="use_height"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></com.example.oneteaapp.view.StatusBarHeightView>
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp_10"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="35dp">
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_marginHorizontal="15dp"
+        android:gravity="center_vertical"
+        android:id="@+id/ll_home_scan"
+        android:background="@drawable/shoushuo"
+        android:orientation="horizontal"
+        android:layout_width="0dp"
+        android:layout_height="35dp">
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/icon_shousuo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:imeOptions="actionSearch"
+            android:id="@+id/et_scan_text"
+            android:background="@null"
+            android:layout_marginLeft="10dp"
+            android:textSize="13sp"
+            android:textColor="#999999"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:textSize="15sp"
+            android:textColor="#333333"
+            android:text="取消"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+<LinearLayout
+    android:id="@+id/ll_scan_jilv"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="15dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
+        <TextView
+            android:gravity="center"
+            android:textSize="15sp"
+            android:textColor="#333333"
+            android:text="搜索历史"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <View
+            android:layout_weight="1"
+            android:layout_width="@dimen/dp_10"
+            android:layout_height="1dp"/>
+        <TextView
+            android:id="@+id/tv_eliminate"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:textColor="#999999"
+            android:text="清除记录"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <com.example.oneteaapp.view.flowlayout.TagFlowLayout
+        android:layout_marginHorizontal="15dp"
+        android:id="@+id/fl_search_records"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/space_normal"
+        app:is_limit="true"
+        app:limit_line_count="3"
+        app:max_select="1">
+    </com.example.oneteaapp.view.flowlayout.TagFlowLayout>
+</LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_scan2"
+        android:layout_marginHorizontal="15dp"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"></android.support.v7.widget.RecyclerView>
+</LinearLayout>

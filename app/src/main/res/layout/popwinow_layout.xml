@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="#55000000"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/ll_select_year"
+        android:gravity="center"
+        android:background="#FAFAFA"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <TextView
+            android:id="@+id/tv_year"
+            android:textColor="#333333"
+            android:textSize="13sp"
+            android:text="全部年份"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_marginLeft="4.5dp"
+            android:src="@mipmap/icon_arrowdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:paddingHorizontal="10dp"
+        android:background="#FAFAFA"
+        android:id="@+id/rv_popwindow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+</LinearLayout>

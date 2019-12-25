@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.example.oneteaapp.view.StatusBarHeightView
+        android:layout_width="match_parent"
+        app:use_type="use_height"
+        android:background="#FFFFFF"
+        android:layout_height="wrap_content">
+    </com.example.oneteaapp.view.StatusBarHeightView>
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ll_return"
+            android:gravity="center_vertical"
+            android:layout_width="50dp"
+            android:layout_height="50dp">
+        <ImageView
+            android:src="@mipmap/fanghui"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            android:text=""
+            android:textColor="#333333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </android.support.v7.widget.Toolbar>
+</LinearLayout>

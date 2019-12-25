@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:gravity="center"
+    android:id="@+id/ll_all"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_classify_img"
+        android:adjustViewBounds="true"
+        android:src="@mipmap/img_fenlei_baicha1"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:layout_marginHorizontal="15dp"
+        android:layout_width="345dp"
+        android:layout_height="115dp" />
+</LinearLayout>

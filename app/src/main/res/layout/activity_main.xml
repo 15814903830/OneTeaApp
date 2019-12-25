@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:layout_weight="1"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+       ></FrameLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:background="#FFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <LinearLayout
+            android:id="@+id/main_ll_home"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/main_tv_home"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:background="@drawable/home"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginBottom="5dp"
+                android:textSize="11sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="首页" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/main_ll_train"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/main_tv_train"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:background="@drawable/home2"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="分类"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/main_ll_scan"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/main_tv_scan"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:background="@drawable/home3"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginBottom="5dp"
+                android:textSize="11sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="交易" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/main_ll_notice"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/main_tv_notice"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:background="@drawable/home4"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginBottom="5dp"
+                android:textSize="11sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="门店" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/main_ll_personage"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/main_tv_personage"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:background="@drawable/home5"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginBottom="5dp"
+                android:textSize="11sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="我的" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

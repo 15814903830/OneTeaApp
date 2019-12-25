@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:background="@mipmap/bg_beijing"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <LinearLayout
+                android:id="@+id/ll_shaoma"
+                android:layout_marginLeft="13dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_marginBottom="5dp"
+                    android:src="@mipmap/icon_saoma"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp" />
+                <TextView
+                    android:textSize="10sp"
+                    android:textColor="#FFFFFF"
+                    android:text="扫码"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_home_scan"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/shoushuo"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="35dp">
+                <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:src="@mipmap/icon_shousuo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:textSize="13sp"
+                    android:textColor="#999999"
+                    android:text="福建白茶"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="13dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <FrameLayout
+                    android:layout_width="30dp"
+                    android:layout_height="30dp">
+                    <ImageView
+                        android:layout_marginBottom="5dp"
+                        android:layout_gravity="bottom"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/gowuc"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp" />
+                    <TextView
+                        android:gravity="center"
+                        android:text="1"
+                        android:background="@drawable/quan"
+                        android:textColor="#D5B36F"
+                        android:textSize="10sp"
+                        android:layout_gravity="right"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp" />
+                </FrameLayout>
+                <TextView
+                    android:textSize="10sp"
+                    android:textColor="#FFFFFF"
+                    android:text="购物车"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <com.zhouwei.mzbanner.MZBannerView
+            android:gravity="center"
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginTop="10dp"
+            app:canLoop="false"
+            app:open_mz_mode="false" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp">
+            <ImageView
+                android:src="@mipmap/icon_pinzhi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:textSize="11sp"
+                android:textColor="#D6B575"
+                android:text="品质优选享安心"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginHorizontal="40dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp">
+            <ImageView
+                android:src="@mipmap/icon_diqiu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:textSize="11sp"
+                android:textColor="#D6B575"
+                android:text="全国包邮"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp">
+            <ImageView
+                android:src="@mipmap/icon_yezi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:textSize="11sp"
+                android:textColor="#D6B575"
+                android:text="品质优选享安心"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+        <ImageView
+            android:src="@mipmap/icon_youhuijuan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

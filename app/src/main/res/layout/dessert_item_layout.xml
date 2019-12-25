@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="110dp">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="90dp">
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="@dimen/dp_10"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_weight="1"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="史上最大茶业科技年会引爆科技之都！"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+
+            <TextView
+                android:id="@+id/tv_sum"
+                android:layout_gravity="bottom"
+                android:textColor="#999999"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:text="211浏览"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <android.support.v7.widget.CardView
+            android:layout_margin="@dimen/dp_10"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="5dp"
+            android:layout_width="107dp"
+            android:layout_height="71dp">
+        <ImageView
+            android:id="@+id/tv_img"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/haowu3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+    <View
+        android:id="@+id/view_xiang"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="#E6E6E6"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"/>
+</LinearLayout>

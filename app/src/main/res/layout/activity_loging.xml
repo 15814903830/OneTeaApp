@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.LogingActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginHorizontal="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <EditText
+        android:paddingHorizontal="@dimen/dp_10"
+        android:hint="手机号"
+        android:background="@drawable/log_shape"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"></EditText>
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/log_shape"
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+            <EditText
+                android:inputType="textPassword"
+                android:layout_weight="1"
+                android:paddingHorizontal="@dimen/dp_10"
+                android:hint="密码"
+                android:background="@drawable/log_shape"
+                android:layout_width="0dp"
+                android:layout_height="45dp"></EditText>
+            <ImageView
+                android:padding="@dimen/dp_10"
+                android:src="@mipmap/icon_yanjingoff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
