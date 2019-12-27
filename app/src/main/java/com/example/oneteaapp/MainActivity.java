@@ -1,27 +1,37 @@
 package com.example.oneteaapp;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.example.oneteaapp.activity.BaseActivity;
+import com.example.oneteaapp.activity.LogingActivity;
 import com.example.oneteaapp.fragmnet.ClassifyFragmnet;
 import com.example.oneteaapp.fragmnet.DealFragment;
 import com.example.oneteaapp.fragmnet.HomeFragment;
 import com.example.oneteaapp.fragmnet.MeFragmnet;
 import com.example.oneteaapp.fragmnet.ShopFragmnet;
+import com.example.oneteaapp.httputlis.base.UsetBase;
+import com.example.oneteaapp.httputlis.network.NetWorks;
+import com.example.oneteaapp.utils.SharedPrefUtil;
 import com.example.oneteaapp.wxapi.util.PayResult;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import rx.Observer;
 
 public class MainActivity extends BaseActivity {
 
@@ -62,12 +72,37 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        Log.e("MainActivity:", SharedPrefUtil.getString(SharedPrefUtil.LOGING));
         mainTvHome.setSelected(true);
         //首页
         if (homeFragment == null) {
             homeFragment = HomeFragment.newInstance();
             showFragment(homeFragment, "HOME");
         }
+
+        NetWorks.GetUserinfo(new Observer<UsetBase>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.e("MainActivity",e.toString());
+            }
+
+            @Override
+            public void onNext(UsetBase usetBase) {
+                Log.e("MainActivity",JSON.toJSONString(usetBase));
+                if (usetBase.getCode()==1){
+                    SharedPrefUtil.putString(SharedPrefUtil.USERINFO, JSON.toJSONString(usetBase));
+                }else if (usetBase.getCode()==1001){
+                    GoToLoging();
+                    Toast.makeText(MainActivity.this, usetBase.getMsg(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     @OnClick({R.id.main_ll_home,R.id.main_ll_train,R.id.main_ll_scan,R.id.main_ll_notice,R.id.main_ll_personage})

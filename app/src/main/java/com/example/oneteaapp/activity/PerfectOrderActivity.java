@@ -19,6 +19,7 @@ import com.example.oneteaapp.StartActivity;
 import com.example.oneteaapp.adapter.PerfectOrderAdapter;
 import com.example.oneteaapp.adapter.ScanAdapter;
 import com.example.oneteaapp.base.ShoppingCartBase;
+import com.example.oneteaapp.dialog.CouponDialog;
 import com.example.oneteaapp.dialog.DialogEnum;
 import com.example.oneteaapp.dialog.DialogListenerBack;
 import com.example.oneteaapp.dialog.PaymentDialog;
@@ -100,6 +101,7 @@ public class PerfectOrderActivity extends BaseActivity implements PerfectOrderAd
                 break;
             case R.id.iv_xuanzhe_youhuijuan:
                 //选择优惠劵
+                CouponDialog();
                 break;
             case R.id.btn_send:
                 //提交订单
@@ -112,6 +114,14 @@ public class PerfectOrderActivity extends BaseActivity implements PerfectOrderAd
 
     private void selectpay() {
         PaymentDialog paymentDialog = new PaymentDialog(PerfectOrderActivity.this, tvZhifuFanshe.getText().toString(),PerfectOrderActivity.this);
+        Window window = paymentDialog.getWindow();
+        window.setGravity(Gravity.BOTTOM);
+        paymentDialog.show();
+    }
+
+
+    private void CouponDialog() {
+        CouponDialog paymentDialog = new CouponDialog(PerfectOrderActivity.this,PerfectOrderActivity.this);
         Window window = paymentDialog.getWindow();
         window.setGravity(Gravity.BOTTOM);
         paymentDialog.show();
