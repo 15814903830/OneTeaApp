@@ -1,10 +1,12 @@
 package com.example.oneteaapp.httputlis.utils;
 
+
+import org.reactivestreams.Subscription;
+
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import rx.Subscription;
 
 /**
  * retrofit工具类
@@ -12,7 +14,11 @@ import rx.Subscription;
 public abstract class RetrofitUtils {
 
     //服务器路径
-    private static final String API_SERVER = "http://yhmg.58xmh.com/";
+    public static final String API_SERVER = "http://m.yihaominggu.com/";
+
+
+    //服务器路径
+    public static final String API = "http://m.yihaominggu.com";
 
     private static Retrofit mRetrofit;
     private static OkHttpClient mOkHttpClient;
@@ -42,7 +48,6 @@ public abstract class RetrofitUtils {
                     //设置使用okhttp网络请求
                     .client(mOkHttpClient)
                     .build();
-
         }
 
         return mRetrofit;

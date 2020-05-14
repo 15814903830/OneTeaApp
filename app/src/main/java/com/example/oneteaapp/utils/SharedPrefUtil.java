@@ -2,16 +2,22 @@ package com.example.oneteaapp.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.example.oneteaapp.MyApplication;
-import com.example.oneteaapp.httputlis.base.LogingBase;
-import com.example.oneteaapp.httputlis.base.UsetBase;
+import com.example.oneteaapp.base.DealDataBase;
+import com.example.oneteaapp.base.Loginbean;
+import com.example.oneteaapp.base.UsetBase;
 
 public class SharedPrefUtil {
+    public static String PASSWORD="PASSWORD";
+    public static String LOGING="LOGING";
+    public static String USERINFO="USERINFO";
+    public static String DEAL="DEAL";
 
-    public static String LOGING;
-    public static String USERINFO;
+    public static String LOGINGG="LOGINGG";
+    public static String PASSWORDD="PASSWORDD";
 //
 //    // 存储一个叫uid的String类型的值：
 //SharedPrefUtil.putString(mContext, "uid", "要赋值为xxxxxx"); // 最后一个是要赋的值
@@ -29,15 +35,33 @@ public class SharedPrefUtil {
 
 
     public static String getToken() {
-        LogingBase logingBase= JSON.parseObject(SharedPrefUtil.getString(SharedPrefUtil.LOGING),LogingBase.class);
-        return logingBase.getData().getToken();
+        Loginbean logingBase= new Loginbean();
+        try {
+            logingBase = JSON.parseObject(SharedPrefUtil.getString(SharedPrefUtil.LOGING), Loginbean.class);
+            return logingBase.getData().getToken();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
     public static UsetBase getUserInfo() {
-        UsetBase usetBase= JSON.parseObject(SharedPrefUtil.getString(SharedPrefUtil.USERINFO),UsetBase.class);
-        return usetBase;
+        if (SharedPrefUtil.getString(SharedPrefUtil.USERINFO).equals("")) {
+            return new UsetBase();
+        } else {
+            UsetBase usetBase = JSON.parseObject(SharedPrefUtil.getString(SharedPrefUtil.USERINFO), UsetBase.class);
+            return usetBase;
+        }
     }
 
+    public static DealDataBase getDealDataBase() {
+        if (SharedPrefUtil.getString(SharedPrefUtil.DEAL).equals("")) {
+            return new DealDataBase();
+        } else {
+            DealDataBase dealDataBase = JSON.parseObject(SharedPrefUtil.getString(SharedPrefUtil.DEAL), DealDataBase.class);
+            return dealDataBase;
+        }
+    }
 
     public static void putBoolean( String key, boolean value) {
         getSharedPref(MyApplication.getInstance()).edit().putBoolean(key, value).commit();

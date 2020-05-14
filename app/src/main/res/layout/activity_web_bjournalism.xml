@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <com.example.oneteaapp.view.StatusBarHeightView
+                app:use_type="use_height"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></com.example.oneteaapp.view.StatusBarHeightView>
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/ll_return"
+                    android:gravity="center_vertical"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp">
+                    <ImageView
+                        android:src="@mipmap/fanghui"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_gravity="center"
+                    android:textSize="18sp"
+                    android:text=""
+                    android:textColor="#333333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:visibility="gone"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:gravity="center"
+                    android:id="@+id/tv_rety_title"
+                    android:layout_gravity="right"
+                    android:textSize="18sp"
+                    android:text="编辑"
+                    android:textColor="#333333"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+            </android.support.v7.widget.Toolbar>
+        </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <WebView
+        android:layout_weight="1"
+        android:id="@+id/web_webactivity"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"></WebView>
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:background="@drawable/deal_shape_15"
+            android:layout_marginLeft="15dp"
+            android:orientation="horizontal"
+            android:layout_width="250dp"
+            android:layout_height="30dp">
+            <ImageView
+                android:layout_marginLeft="10dp"
+                android:src="@mipmap/bipng"
+                android:layout_width="12dp"
+                android:layout_height="12dp"/>
+
+            <EditText
+                android:textSize="15sp"
+                android:textColor="#333333"
+                android:layout_marginHorizontal="10dp"
+                android:hint="写评论…"
+                android:background="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <FrameLayout
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="29dp"
+            android:layout_width="20dp"
+            android:layout_height="22dp">
+            <ImageView
+                android:layout_gravity="bottom"
+                android:src="@mipmap/xinxi"
+                android:layout_width="16dp"
+                android:layout_height="16dp"/>
+            <com.example.oneteaapp.view.MyTextView
+                android:layout_gravity="right"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_10"></com.example.oneteaapp.view.MyTextView>
+        </FrameLayout>
+        <ImageView
+            android:src="@mipmap/zhuanfa"
+            android:layout_marginLeft="30dp"
+            android:layout_width="15dp"
+            android:layout_height="15dp"/>
+    </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

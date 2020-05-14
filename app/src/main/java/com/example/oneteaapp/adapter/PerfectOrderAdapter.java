@@ -6,8 +6,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.oneteaapp.R;
+import com.example.oneteaapp.base.PerfectBase;
+import com.example.oneteaapp.httputlis.utils.RetrofitUtils;
 
 import java.util.List;
 
@@ -15,19 +20,19 @@ public class PerfectOrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     private Context mContext;
 
-    public List<String> getList() {
+    public List<PerfectBase> getList() {
         return mList;
     }
 
-    public void setList(List<String> list) {
+    public void setList(List<PerfectBase> list) {
         mList = list;
     }
 
-    private List<String> mList;
+    private List<PerfectBase> mList;
 
 
     private PerfectOrderAdapterOnItem perfectOrderAdapterOnItem;
-    public PerfectOrderAdapter(Context context, List<String> commmentList, PerfectOrderAdapterOnItem perfectOrderAdapterOnItem) {
+    public PerfectOrderAdapter(Context context, List<PerfectBase> commmentList, PerfectOrderAdapterOnItem perfectOrderAdapterOnItem) {
         this.mContext = context;
         this.mList = commmentList;
         this.perfectOrderAdapterOnItem = perfectOrderAdapterOnItem;
@@ -45,13 +50,11 @@ public class PerfectOrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, final int i) {
 //        Log.e("onBindViewHolder",""+i);
-//        Glide.with(mContext).load(R.mipmap.img_fenlei_baicha1).into(((ViewHolder) viewHolder).iv_classify_img);
-//            ((ViewHolder) viewHolder).ll_all.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    myClassifyAdapterOnItem.OnItemClickListener("白毫银针");
-//                }
-//            });
+        Glide.with(mContext).load(RetrofitUtils.API+mList.get(i).getImgs()).into( ((ViewHolder) viewHolder).tv_img);
+        ((ViewHolder) viewHolder).tv_title.setText(mList.get(i).getDesc());
+        ((ViewHolder) viewHolder).tv_sum.setText("x"+mList.get(i).getSum());
+        ((ViewHolder) viewHolder).tv_year.setText(mList.get(i).getYear()+" "+mList.get(i).getSpec());
+        ((ViewHolder) viewHolder).tv_money.setText("¥"+mList.get(i).getPrice());
     }
 
     @Override
@@ -67,12 +70,19 @@ public class PerfectOrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     private class ViewHolder extends RecyclerView.ViewHolder {
 
-//        ImageView iv_classify_img;
-//        LinearLayout ll_all;
+        ImageView tv_img;
+        TextView tv_title;
+        TextView tv_sum;
+        TextView tv_year;
+        TextView tv_money;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-//            iv_classify_img = itemView.findViewById(R.id.iv_classify_img);
-//            ll_all = itemView.findViewById(R.id.ll_all);
+            tv_img = itemView.findViewById(R.id.tv_img);
+            tv_title = itemView.findViewById(R.id.tv_title);
+            tv_sum = itemView.findViewById(R.id.tv_sum);
+            tv_year = itemView.findViewById(R.id.tv_year);
+            tv_money = itemView.findViewById(R.id.tv_money);
         }
     }
 

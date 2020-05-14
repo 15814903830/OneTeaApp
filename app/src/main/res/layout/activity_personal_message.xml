@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFF7F7F7"
+    tools:context=".activity.PersonalMessageActivity">
+
+    <include layout="@layout/toolbar_base_layout"/>
+
+    <LinearLayout
+        android:background="#FFFFFF"
+        android:layout_marginTop="@dimen/dp_10"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="121dp">
+
+        <LinearLayout
+            android:id="@+id/ll_henad_img"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginLeft="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+            <TextView
+                android:layout_weight="1"
+                android:text="头像"
+                android:textSize="16sp"
+                android:textColor="#FF666666"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civ_img"
+                android:layout_marginRight="@dimen/dp_10"
+                android:src="@mipmap/toxiang"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+
+            <ImageView
+                android:layout_marginRight="15dp"
+                android:src="@mipmap/youjianto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        <View
+            android:layout_marginLeft="15dp"
+            android:background="#FFE6E6E6"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+        <LinearLayout
+            android:id="@+id/ll_henad_name"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginLeft="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+            <TextView
+                android:layout_weight="1"
+                android:text="昵称"
+                android:textSize="16sp"
+                android:textColor="#FF666666"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_marginRight="@dimen/dp_10"
+                android:text="137****2155"
+                android:textSize="16sp"
+                android:textColor="#FF666666"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_marginRight="15dp"
+                android:src="@mipmap/youjianto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -12,7 +12,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.oneteaapp.R;
+import com.example.oneteaapp.activity.CommoditDetailsyActivity;
+import com.example.oneteaapp.base.HomeDateBase;
 import com.example.oneteaapp.base.HotProductBase;
+import com.example.oneteaapp.httputlis.utils.RetrofitUtils;
 
 import java.util.List;
 
@@ -20,18 +23,18 @@ public class HotProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     private Context mContext;
 
-    public List<HotProductBase> getList() {
+    public List<HomeDateBase.DataBean.ListsBean> getList() {
         return mList;
     }
 
-    public void setList(List<HotProductBase> list) {
+    public void setList(List<HomeDateBase.DataBean.ListsBean> list) {
         mList = list;
     }
 
-    private List<HotProductBase> mList;
+    private List<HomeDateBase.DataBean.ListsBean> mList;
 
 
-    public HotProductAdapter(Context context, List<HotProductBase> commmentList) {
+    public HotProductAdapter(Context context, List<HomeDateBase.DataBean.ListsBean> commmentList) {
         this.mContext = context;
         this.mList = commmentList;
     }
@@ -47,10 +50,18 @@ public class HotProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, final int i) {
         Log.e("onBindViewHolder",""+i);
-        Glide.with(mContext).load(R.mipmap.banner2).into( ((ViewHolder) viewHolder).iv_hot_img);
-        ((ViewHolder) viewHolder).tv_name.setText(mList.get(i).getName());
-        ((ViewHolder) viewHolder).tv_name2.setText(mList.get(i).getIntroduce());
-        ((ViewHolder) viewHolder).tv_money.setText(mList.get(i).getPrice());
+        HomeDateBase.DataBean.ListsBean bean=mList.get(i);
+        Glide.with(mContext).load(RetrofitUtils.API+bean.getCover()).into( ((ViewHolder) viewHolder).iv_hot_img);
+        ((ViewHolder) viewHolder).tv_name.setText(mList.get(i).getTitle());
+        ((ViewHolder) viewHolder).tv_name2.setText(mList.get(i).getDesc());
+        ((ViewHolder) viewHolder).tv_money.setText("¥"+mList.get(i).getPrice());
+
+        ((ViewHolder) viewHolder).ll_all.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CommoditDetailsyActivity.actionStart(mContext,""+mList.get(i).getId(),mList.get(i).getCate_id());
+            }
+        });
     }
 
     @Override

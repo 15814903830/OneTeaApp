@@ -86,14 +86,13 @@ public class OkHttp3Utils {
                     .addQueryParameter("os", "android")
                     .addQueryParameter("time", URLEncoder.encode(time, "UTF-8"))
                     .addQueryParameter("version", "1.1.0")
-                    .addQueryParameter("user_token", SharedPrefUtil.getToken())
                     .addQueryParameter("sign", MD5.md5("key=" + mKey));
+
             // 构建新的请求
             Request newRequest = oldRequest.newBuilder()
                     .method(oldRequest.method(), oldRequest.body())
                     .url(authorizedUrlBuilder.build())
                     .build();
-
             //ysl-----end
             if (!isNetworkReachable(MyApplication.getInstance().getApplicationContext())) {
                 Toast.makeText(MyApplication.getInstance().getApplicationContext(), "暂无网络", Toast.LENGTH_SHORT).show();
@@ -121,10 +120,10 @@ public class OkHttp3Utils {
             String methodStr = newRequest.method(); // 获取请求方式
             RequestBody body = newRequest.body(); // 获取请求body
             String bodyStr = (body == null ? "" : body.toString());
-//            // 打印Request数据
-//            Log.i("ysl", "requestUrl=====>" + requestUrl);
-//            Log.i("ysl", "requestMethod=====>" + methodStr);
-//            Log.i("ysl", "requestBody=====>" + response.body().toString());
+            // 打印Request数据
+            Log.i("ysl", "requestUrl=====>" + requestUrl);
+            Log.i("ysl", "requestMethod=====>" + methodStr);
+            Log.i("ysl", "requestBody=====>" + body);
             return response;
         }
     }

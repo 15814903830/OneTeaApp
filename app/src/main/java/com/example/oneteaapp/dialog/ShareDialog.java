@@ -7,98 +7,93 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.oneteaapp.R;
 import com.example.oneteaapp.adapter.ClassifyAdapter;
 import com.example.oneteaapp.adapter.DialogAdapter;
 import com.example.oneteaapp.base.DialogBase;
+import com.example.oneteaapp.base.GoodInfoBase;
+import com.example.oneteaapp.httputlis.utils.RetrofitUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 /**
- * 分享方式
+ * 规格
  */
 public class ShareDialog extends ComonDialog implements View.OnClickListener ,DialogAdapter.MyClassifyAdapterOnItem{
     private DialogListenerBack dBack;
     private TextView textView;
+    private TextView tv_title;
+    private TextView tv_year;
+    private ImageView tv_img;
     private RecyclerView recyclerView;
-    List<DialogBase> list=new ArrayList<>();
-    private String string="一级";
+    private String string="";
     DialogAdapter classifyAdapter;
-    public ShareDialog(Context context, DialogListenerBack dBack) {
+    GoodInfoBase listsBeans;
+    private String count;
+    private String guigeid;
+    private String year;
+    public ShareDialog(Context context,GoodInfoBase listsBeans,String count, DialogListenerBack dBack,String guigeid,String year) {
         super(context, dBack);
-
+        this.listsBeans=listsBeans;
         this.dBack = dBack;
+        this.count = count;
+        this.guigeid = guigeid;
+        this.year = year;
         setContentView(R.layout.dialog_share);
         bindDialog();
-//        setWindow();
+        setWindow();
     }
 
     @Override
     public void bindDialog() {
+
+        if (guigeid.equals("未选择")&&listsBeans.getData().getSuk_lists().get(0).getSub().size()>0){
+            listsBeans.getData().getSuk_lists().get(0).getSub().get(0).setaBoolean(true);
+        }else {
+            for (int i=0;i<listsBeans.getData().getSuk_lists().get(0).getSub().size();i++){
+                if (listsBeans.getData().getSuk_lists().get(0).getSub().get(i).getId().equals(guigeid)){
+                    listsBeans.getData().getSuk_lists().get(0).getSub().get(i).setaBoolean(true);
+                }else {
+                    listsBeans.getData().getSuk_lists().get(0).getSub().get(i).setaBoolean(false);
+                }
+            }
+        }
+
+
+
         findViewById(R.id.ll_dismiss).setOnClickListener(this);
         findViewById(R.id.ll_aee).setOnClickListener(this);
         findViewById(R.id.ll_add).setOnClickListener(this);
         findViewById(R.id.btn_send).setOnClickListener(this);
         textView=findViewById(R.id.tv_sum);
         recyclerView=findViewById(R.id.rv_xuanzhe);
-        setdata();
+        tv_title=findViewById(R.id.tv_title);
+        tv_year=findViewById(R.id.tv_year);
+        tv_img=findViewById(R.id.tv_img);
+        Glide.with(getContext()).load(RetrofitUtils.API+listsBeans.getData().getCover()).into(tv_img);
+        tv_title.setText(listsBeans.getData().getTitle());
+        tv_year.setText("年份："+year);
         GridLayoutManager linearLayoutManager3 = new GridLayoutManager(getContext(),4);
         recyclerView.setLayoutManager(linearLayoutManager3);
-         classifyAdapter = new DialogAdapter(getContext(),  list,this);
+         classifyAdapter = new DialogAdapter(getContext(),  listsBeans.getData().getSuk_lists().get(0).getSub(),this);
         recyclerView.setAdapter(classifyAdapter);
+        textView.setText(count);
 
-
-    }
-
-    private void setdata() {
-        DialogBase dialogBase=new DialogBase();
-        dialogBase.setText("一级");
-        dialogBase.setaBoolean(false);
-        list.add(dialogBase);
-        DialogBase dialogBase2=new DialogBase();
-        dialogBase2.setText("二级");
-        dialogBase2.setaBoolean(true);
-        list.add(dialogBase2);
-        DialogBase dialogBase3=new DialogBase();
-        dialogBase3.setText("三级");
-        dialogBase3.setaBoolean(true);
-        list.add(dialogBase3);
-        DialogBase dialogBase4=new DialogBase();
-        dialogBase4.setText("四级");
-        dialogBase4.setaBoolean(true);
-        list.add(dialogBase4);
-        DialogBase dialogBase5=new DialogBase();
-        dialogBase5.setText("五级");
-        dialogBase5.setaBoolean(true);
-        list.add(dialogBase5);
-        DialogBase dialogBase6=new DialogBase();
-        dialogBase6.setText("六级");
-        dialogBase6.setaBoolean(true);
-        list.add(dialogBase6);
-        DialogBase dialogBase7=new DialogBase();
-        dialogBase7.setText("七级");
-        dialogBase7.setaBoolean(true);
-        list.add(dialogBase7);
-        DialogBase dialogBase8=new DialogBase();
-        dialogBase8.setText("八级");
-        dialogBase8.setaBoolean(true);
-        list.add(dialogBase8);
-        DialogBase dialogBase9=new DialogBase();
-        dialogBase9.setText("九级");
-        dialogBase9.setaBoolean(true);
-        list.add(dialogBase9);
-        DialogBase dialogBase10=new DialogBase();
-        dialogBase10.setText("十级");
-        dialogBase10.setaBoolean(true);
-        list.add(dialogBase10);
     }
 
     private void setWindow() {
+
+
+
+
+
         Window window = getWindow();
         WindowManager.LayoutParams attributesParams = window.getAttributes();
         attributesParams.flags = WindowManager.LayoutParams.FLAG_ALLOW_LOCK_WHILE_SCREEN_ON;
@@ -137,15 +132,15 @@ public class ShareDialog extends ComonDialog implements View.OnClickListener ,Di
     }
 
     @Override
-    public void OnItemClickListener(String name) {
-        for (int is=0;is<list.size();is++){
-            if (name.equals(list.get(is).getText())){
-                list.get(is).setaBoolean(false);
+    public void OnItemClickListener(String name,String id) {
+        for (int i=0;i<listsBeans.getData().getSuk_lists().get(0).getSub().size();i++){
+            if (listsBeans.getData().getSuk_lists().get(0).getSub().get(i).getId().equals(id)){
+                listsBeans.getData().getSuk_lists().get(0).getSub().get(i).setaBoolean(true);
             }else {
-                list.get(is).setaBoolean(true);
+                listsBeans.getData().getSuk_lists().get(0).getSub().get(i).setaBoolean(false);
             }
         }
         classifyAdapter.notifyDataSetChanged();
-        string=name;
+        string=id;
     }
 }

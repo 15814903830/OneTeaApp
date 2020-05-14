@@ -3,6 +3,8 @@ package com.example.oneteaapp;
 import android.app.Activity;
 import android.app.Application;
 
+import com.uuzuche.lib_zxing.activity.ZXingLibrary;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,12 +14,14 @@ import java.util.List;
 public class MyApplication extends Application {
 
     private static MyApplication instance;
+    public static int Paytype; //充值=0  购买=1
     //界面列表
     private List<Activity> mList = new ArrayList<>();
     @Override
     public void onCreate() {
         super.onCreate();
         this.instance = this;
+        ZXingLibrary.initDisplayOpinion(this);
     }
 
 

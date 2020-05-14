@@ -1,11 +1,11 @@
-package com.example.oneteaapp.httputlis.base;
+package com.example.oneteaapp.base;
 
 public class UsetBase {
 
     /**
      * code : 1
      * msg : ok success
-     * data : {"id":174,"pid":0,"level":1,"pid_code":"","form_model":1,"nickname":"15814903833","cover":0,"openid":"","account":"15814903830","password":"$2y$10$V/izjCPPBMN86PIBQvV7ge/kf6f6.latSH7Bv5jpi71wN9W5Arti.","email":"","status":1,"ip":"120.79.11.196","is_gm":0,"create_time":1577457060,"update_time":1577457060,"subjection_id":0,"member_level":0,"cover_path":""}
+     * data : {"id":174,"pid":0,"level":1,"pid_code":"","form_model":1,"nickname":"15814903833","cover":116,"openid":"","account":"15814903830","password":"$2y$10$V/izjCPPBMN86PIBQvV7ge/kf6f6.latSH7Bv5jpi71wN9W5Arti.","email":"","status":1,"ip":"120.79.11.196","is_gm":0,"create_time":1577457060,"update_time":1577546305,"subjection_id":0,"member_level":0,"invitation_code":"Z1MFAprp","money":"0.00","has_stock":0,"cover_path":"/uploads/picture/20200102/3dc370550435367846c93a6ddd5b2a46.png","reward_money":0,"my_team":0}
      * url :
      * wait : 3
      */
@@ -64,7 +64,7 @@ public class UsetBase {
          * pid_code :
          * form_model : 1
          * nickname : 15814903833
-         * cover : 0
+         * cover : 116
          * openid :
          * account : 15814903830
          * password : $2y$10$V/izjCPPBMN86PIBQvV7ge/kf6f6.latSH7Bv5jpi71wN9W5Arti.
@@ -73,10 +73,15 @@ public class UsetBase {
          * ip : 120.79.11.196
          * is_gm : 0
          * create_time : 1577457060
-         * update_time : 1577457060
+         * update_time : 1577546305
          * subjection_id : 0
          * member_level : 0
-         * cover_path :
+         * invitation_code : Z1MFAprp
+         * money : 0.00
+         * has_stock : 0
+         * cover_path : /uploads/picture/20200102/3dc370550435367846c93a6ddd5b2a46.png
+         * reward_money : 0
+         * my_team : 0
          */
 
         private int id;
@@ -97,7 +102,12 @@ public class UsetBase {
         private int update_time;
         private int subjection_id;
         private int member_level;
+        private String invitation_code;
+        private String money;
+        private int has_stock;
         private String cover_path;
+        private int reward_money;
+        private int my_team;
 
         public int getId() {
             return id;
@@ -243,12 +253,52 @@ public class UsetBase {
             this.member_level = member_level;
         }
 
+        public String getInvitation_code() {
+            return invitation_code;
+        }
+
+        public void setInvitation_code(String invitation_code) {
+            this.invitation_code = invitation_code;
+        }
+
+        public String getMoney() {
+            return money;
+        }
+
+        public void setMoney(String money) {
+            this.money = money;
+        }
+
+        public int getHas_stock() {
+            return has_stock;
+        }
+
+        public void setHas_stock(int has_stock) {
+            this.has_stock = has_stock;
+        }
+
         public String getCover_path() {
             return cover_path;
         }
 
         public void setCover_path(String cover_path) {
             this.cover_path = cover_path;
+        }
+
+        public int getReward_money() {
+            return reward_money;
+        }
+
+        public void setReward_money(int reward_money) {
+            this.reward_money = reward_money;
+        }
+
+        public int getMy_team() {
+            return my_team;
+        }
+
+        public void setMy_team(int my_team) {
+            this.my_team = my_team;
         }
     }
 }

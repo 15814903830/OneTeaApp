@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.oneteaapp.R;
+import com.example.oneteaapp.base.ClassifyBase;
 
 import java.util.List;
 
@@ -23,20 +24,20 @@ public class PopWindowAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     private Context mContext;
 
-    public List<String> getList() {
+    public List<ClassifyBase.DataBean> getList() {
         return mList;
     }
 
-    public void setList(List<String> list) {
+    public void setList(List<ClassifyBase.DataBean> list) {
         mList = list;
     }
 
-    private List<String> mList;
+    private List<ClassifyBase.DataBean> mList;
     private String title;
 
 
     private MyPopWindowAdapterOnItem myClassifyAdapterOnItem;
-    public PopWindowAdapter(Context context, List<String> commmentList, MyPopWindowAdapterOnItem myClassifyAdapterOnItem,String title) {
+    public PopWindowAdapter(Context context, List<ClassifyBase.DataBean> commmentList, MyPopWindowAdapterOnItem myClassifyAdapterOnItem, String title) {
         this.mContext = context;
         this.mList = commmentList;
         this.title = title;
@@ -54,7 +55,7 @@ public class PopWindowAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, final int i) {
-        ((ViewHolder) viewHolder).tv_pop_text.setText(mList.get(i));
+        ((ViewHolder) viewHolder).tv_pop_text.setText(mList.get(i).getTitle());
         if (title.equals(mList.get(i))){
             ((ViewHolder) viewHolder).tv_pop_text.setTextColor(mContext.getResources().getColor(R.color.cardview_light_background));
             Resources resources=mContext.getResources();
@@ -64,7 +65,7 @@ public class PopWindowAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         ((ViewHolder) viewHolder).tv_pop_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myClassifyAdapterOnItem.OnItemClickListener(mList.get(i));
+                myClassifyAdapterOnItem.OnItemClickListener(mList.get(i).getTitle(),""+mList.get(i).getId());
             }
         });
     }
@@ -76,7 +77,7 @@ public class PopWindowAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
 
     public  interface MyPopWindowAdapterOnItem{
-        void OnItemClickListener(String name);
+        void OnItemClickListener(String name,String id);
     }
 
 

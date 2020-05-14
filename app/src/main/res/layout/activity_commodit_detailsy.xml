@@ -158,7 +158,7 @@
                     android:id="@+id/tv_year"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="福建"
+                    android:text=""
                     android:textColor="#999999"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -176,7 +176,7 @@
                     android:layout_height="wrap_content" />
                 <TextView
                     android:id="@+id/tv_inventory"
-                    android:text="福建"
+                    android:text=""
                     android:textSize="13sp"
                     android:textColor="#999999"
                     android:layout_width="wrap_content"
@@ -209,26 +209,27 @@
                     android:layout_height="wrap_content" />
                 <TextView
                     android:id="@+id/tv_grade"
-                    android:text="一级"
+                    android:text=""
                     android:textSize="14sp"
                     android:textColor="#333333"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <View
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
                 <LinearLayout
                     android:id="@+id/ll_grade"
                     android:gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent">
-                <ImageView
-                    android:layout_marginRight="15dp"
-                    android:src="@mipmap/icon_more"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:src="@mipmap/icon_more" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -299,12 +300,11 @@
             android:src="@mipmap/xqtu" />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/iv_details"
-        android:scaleType="centerCrop"
-        android:src="@drawable/spxq"
+    <WebView
+        android:id="@+id/web_details"
         android:layout_width="match_parent"
-        android:layout_height="375dp" />
+        android:layout_height="wrap_content"
+        tools:ignore="WebViewLayout" />
     </LinearLayout>
         </LinearLayout>
     </ScrollView>
@@ -350,9 +350,9 @@
                     android:layout_width="15dp"
                     android:layout_height="15dp" />
                 <TextView
+                    android:visibility="gone"
                     android:id="@+id/tv_commodity_sum"
                     android:gravity="center"
-                    android:text="1"
                     android:background="@drawable/quan_red"
                     android:textColor="#FFFFFF"
                     android:textSize="10sp"

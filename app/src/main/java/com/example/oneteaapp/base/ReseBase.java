@@ -1,18 +1,18 @@
-package com.example.oneteaapp.httputlis.base;
+package com.example.oneteaapp.base;
 
-public class LogingBase {
+public class ReseBase {
 
     /**
-     * code : 1
-     * msg : 登录成功！
-     * data : {"token":"YZFBc2wXW7_172"}
-     * url :
+     * code : 0
+     * msg : 当前手机号已注册！
+     * data :
+     * url : javascript:history.back(-1);
      * wait : 3
      */
 
     private int code;
     private String msg;
-    private DataBean data;
+    private String data;
     private String url;
     private int wait;
 
@@ -32,11 +32,11 @@ public class LogingBase {
         this.msg = msg;
     }
 
-    public DataBean getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(DataBean data) {
+    public void setData(String data) {
         this.data = data;
     }
 
@@ -54,21 +54,5 @@ public class LogingBase {
 
     public void setWait(int wait) {
         this.wait = wait;
-    }
-
-    public static class DataBean {
-        /**
-         * token : YZFBc2wXW7_172
-         */
-
-        private String token;
-
-        public String getToken() {
-            return token;
-        }
-
-        public void setToken(String token) {
-            this.token = token;
-        }
     }
 }

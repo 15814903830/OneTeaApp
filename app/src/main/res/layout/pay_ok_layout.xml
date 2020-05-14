@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="150dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/tv_head_img"
+            android:src="@mipmap/pay_on"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_marginTop="15dp"
+            android:textSize="17sp"
+            android:text="支付成功"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/tv_add_send"
+            android:layout_width="250dp"
+            android:layout_height="45dp" />
+        <Button
+            android:id="@+id/btn_send2"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/tv_add_sendno"
+            android:layout_width="250dp"
+            android:layout_height="45dp" />
+    </LinearLayout>
+</LinearLayout>

@@ -11,30 +11,36 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
 import com.bumptech.glide.Glide;
 import com.example.oneteaapp.R;
+import com.example.oneteaapp.base.SetUsetData;
+import com.example.oneteaapp.base.ShoPinCarBase;
 import com.example.oneteaapp.base.ShoppingCartBase;
+import com.example.oneteaapp.httputlis.network.NetWorks;
+import com.example.oneteaapp.httputlis.utils.RetrofitUtils;
 
 import java.util.List;
+
+import rx.Observer;
 
 public class ShoppingCartAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context mContext;
 
-    public List<ShoppingCartBase> getList() {
+    public List<ShoPinCarBase.DataBean> getList() {
         return mList;
     }
 
-    public void setList(List<ShoppingCartBase> list) {
+    public void setList(List<ShoPinCarBase.DataBean> list) {
         mList = list;
     }
 
-    private List<ShoppingCartBase> mList;
+    private List<ShoPinCarBase.DataBean> mList;
 
 
     private ShoppingCartAdapterOnItem shoppingCartAdapterOnItem;
-
-    public ShoppingCartAdapter(Context context, List<ShoppingCartBase> commmentList, ShoppingCartAdapterOnItem shoppingCartAdapterOnItem) {
+    public ShoppingCartAdapter(Context context, List<ShoPinCarBase.DataBean> commmentList, ShoppingCartAdapterOnItem shoppingCartAdapterOnItem) {
         this.mContext = context;
         this.mList = commmentList;
         this.shoppingCartAdapterOnItem = shoppingCartAdapterOnItem;
@@ -52,8 +58,11 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder viewHolder, final int i) {
         Log.e("onBindViewHolder", "" + i);
-        // Glide.with(mContext).load(R.mipmap.img_fenlei_baicha1).into(((ViewHolder) viewHolder).iv_classify_img);
-
+         Glide.with(mContext).load(RetrofitUtils.API+mList.get(i).getGoods_info().getCover()).into(((ViewHolder) viewHolder).iv_shopping_img);
+        ((ViewHolder) viewHolder).tv_title.setText(mList.get(i).getGoods_info().getTitle());
+        ((ViewHolder) viewHolder).tv_title_2.setText(mList.get(i).getGoods_info().getDesc());
+        ((ViewHolder) viewHolder).tv_money.setText("¥"+mList.get(i).getGoods_info().getPrice());
+        ((ViewHolder) viewHolder).tv_sum.setText(""+mList.get(i).getCount());
         if (mList.get(i).isXunzhe()) {
             ((ViewHolder) viewHolder).iv_xuanzheimg.setSelected(true);
         } else {
@@ -80,7 +89,8 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
                 } else {
                     ((ViewHolder) viewHolder).tv_sum.setText("" + (Integer.parseInt(((ViewHolder) viewHolder).tv_sum.getText().toString()) - 1));
-                    mList.get(i).setSulian(((ViewHolder) viewHolder).tv_sum.getText().toString());
+                    mList.get(i).setCount(Integer.parseInt(((ViewHolder) viewHolder).tv_sum.getText().toString()));
+                    SetSum(-1,mList.get(i).getId());
                 }
             }
         });
@@ -89,7 +99,28 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             @Override
             public void onClick(View v) {
                 ((ViewHolder) viewHolder).tv_sum.setText("" + (Integer.parseInt(((ViewHolder) viewHolder).tv_sum.getText().toString()) + 1));
-                mList.get(i).setSulian(((ViewHolder) viewHolder).tv_sum.getText().toString());
+                mList.get(i).setCount(Integer.parseInt(((ViewHolder) viewHolder).tv_sum.getText().toString()));
+                SetSum(1,mList.get(i).getId());
+
+
+            }
+        });
+    }
+
+
+    public void SetSum(int count,int id){
+        NetWorks.GetSetcount(""+count, ""+id, new Observer<SetUsetData>() {
+            @Override
+            public void onCompleted() {
+            }
+
+            @Override
+            public void onError(Throwable e) {
+            }
+
+            @Override
+            public void onNext(SetUsetData setUsetData) {
+                shoppingCartAdapterOnItem.OnItemClickListenersum("");
             }
         });
     }
@@ -102,6 +133,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     public interface ShoppingCartAdapterOnItem {
         void OnItemClickListener(String name);
+        void OnItemClickListenersum(String sum);
     }
 
 

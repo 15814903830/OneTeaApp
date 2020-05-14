@@ -1,7 +1,6 @@
 package com.example.oneteaapp.activity;
 
 import android.content.Intent;
-import android.net.Network;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,8 +14,9 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.example.oneteaapp.R;
-import com.example.oneteaapp.httputlis.base.RegisterBase;
+import com.example.oneteaapp.base.RegisterBase;
 import com.example.oneteaapp.httputlis.network.NetWorks;
+import com.example.oneteaapp.view.WebActivity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,8 +34,8 @@ public class RegisterActivity extends BaseActivity {
     TextView tvTitle;
     @BindView(R.id.et_mobile)
     EditText etMobile;
-    @BindView(R.id.et_password)
-    EditText etPassword;
+    @BindView(R.id.et_code)
+    EditText et_code;
     @BindView(R.id.btn_next)
     Button button;
     @BindView(R.id.tv_xieyi_1)
@@ -52,12 +52,15 @@ public class RegisterActivity extends BaseActivity {
         etMobile.addTextChangedListener(textWatcher);
     }
 
-    @OnClick({R.id.tv_title, R.id.btn_next})
+    @OnClick({R.id.tv_title, R.id.btn_next,R.id.ll_return,R.id.tv_xieyi_1,R.id.tv_xieyi_2})
     public void MyOnClick(View view) {
         switch (view.getId()) {
             case R.id.tv_title:
                 startActivity(new Intent(RegisterActivity.this,LogingActivity.class));
                 // 登录
+                break;
+            case R.id.ll_return:
+                finish();
                 break;
             case R.id.btn_next:
                 Map<String, String> parm=new HashMap<>();
@@ -77,17 +80,21 @@ public class RegisterActivity extends BaseActivity {
                     @Override
                     public void onNext(RegisterBase registerBase) {
                         Log.e("NetWorks:", JSON.toJSONString(registerBase));
-                        Intent intent=new Intent(RegisterActivity.this,RegisterCodeActivity.class);
-                        intent.putExtra("phone",etMobile.getText().toString());
-                        startActivity(intent);
-//                        if (registerBase.getCode()==1){
-//                            Intent intent=new Intent(RegisterActivity.this,RegisterCodeActivity.class);
-//                            intent.putExtra("phone",etMobile.getText().toString());
-//                            startActivity(intent);
-//                           // Toast.makeText(RegisterActivity.this, registerBase.getMsg(), Toast.LENGTH_SHORT).show();
-//                        }
+                        if (registerBase.getCode()==1){
+                            Intent intent=new Intent(RegisterActivity.this,RegisterCodeActivity.class);
+                            intent.putExtra("phone",etMobile.getText().toString());
+                            intent.putExtra("code",et_code.getText().toString().equals("")?"abc":et_code.getText().toString());
+                            startActivity(intent);
+                        }
+                        Toast.makeText(RegisterActivity.this, registerBase.getMsg(), Toast.LENGTH_SHORT).show();
                     }
                 });
+                break;
+            case R.id.tv_xieyi_1:
+                WebActivity.actionStart(RegisterActivity.this,"服务协议");
+                break;
+            case R.id.tv_xieyi_2:
+                WebActivity.actionStart(RegisterActivity.this,"隐私政策");
                 break;
         }
     }

@@ -25,9 +25,12 @@ import com.example.oneteaapp.R;
 import com.example.oneteaapp.activity.QRCodeActivity;
 import com.example.oneteaapp.adapter.HotProductAdapter;
 import com.example.oneteaapp.adapter.SuperiorAdapter;
+import com.example.oneteaapp.base.HomeBannerBase;
 import com.example.oneteaapp.base.HotProductBase;
 import com.example.oneteaapp.baserecyclview.MultipleItemAdapter;
 import com.example.oneteaapp.baserecyclview.MyMultipleItem;
+import com.example.oneteaapp.httputlis.network.NetWorks;
+import com.example.oneteaapp.view.WebActivity2;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -42,6 +45,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import rx.Observer;
 
 /**
  * 主页
@@ -69,6 +73,7 @@ public class HomeFragment extends Fragment implements MultipleItemAdapter.SaoMa{
         return mView;
     }
 
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -93,7 +98,7 @@ public class HomeFragment extends Fragment implements MultipleItemAdapter.SaoMa{
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        refreshlayout.finishRefresh(1000/*,false*/);//传入false表示刷新失败
+                        refreshlayout.finishRefresh(500/*,false*/);//传入false表示刷新失败
                     }
                 }, 100);
             }
@@ -112,7 +117,6 @@ public class HomeFragment extends Fragment implements MultipleItemAdapter.SaoMa{
         rvBaseRecyclview.setNestedScrollingEnabled(false);
     }
     private void initcommentadapter(List<HotProductBase> commmentList) {
-
         dast.add(new MyMultipleItem(MyMultipleItem.HENAD_TYPE, commmentList));
         dast.add(new MyMultipleItem(MyMultipleItem.FIRST_TYPE, commmentList));
         dast.add(new MyMultipleItem(MyMultipleItem.SECOND_TYPE, commmentList));
@@ -129,6 +133,12 @@ public class HomeFragment extends Fragment implements MultipleItemAdapter.SaoMa{
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
     }
 
     public boolean isNetworkConnected(Context context) {
@@ -156,8 +166,15 @@ public class HomeFragment extends Fragment implements MultipleItemAdapter.SaoMa{
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-//        String mycodedata = data.getStringExtra(QRCodeActivity.RESULT);
-//        Log.e("mycodedata:",mycodedata);
+        if (data!=null){
+            String mycodedata = data.getStringExtra(QRCodeActivity.RESULT);
+            if (mycodedata.contains("http")||mycodedata.contains("https")){
+                WebActivity2.actionStart(getContext(),mycodedata);
+            }
+            Log.e("mycodedata:", mycodedata);
+        }
+
+
     }
 
 }

@@ -9,9 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.oneteaapp.R;
+import com.example.oneteaapp.activity.CommoditDetailsyActivity;
+import com.example.oneteaapp.base.HomeDateBase;
+import com.example.oneteaapp.httputlis.utils.RetrofitUtils;
 
 import java.util.List;
 
@@ -19,19 +23,19 @@ public class ScanAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     private Context mContext;
 
-    public List<String> getList() {
+    public List<HomeDateBase .DataBean.ListsBean> getList() {
         return mList;
     }
 
-    public void setList(List<String> list) {
+    public void setList(List<HomeDateBase .DataBean.ListsBean> list) {
         mList = list;
     }
 
-    private List<String> mList;
+    private List<HomeDateBase .DataBean.ListsBean> mList;
 
 
     private MyClassifyAdapterOnItem myClassifyAdapterOnItem;
-    public ScanAdapter(Context context, List<String> commmentList, MyClassifyAdapterOnItem myClassifyAdapterOnItem) {
+    public ScanAdapter(Context context, List<HomeDateBase .DataBean.ListsBean> commmentList, MyClassifyAdapterOnItem myClassifyAdapterOnItem) {
         this.mContext = context;
         this.mList = commmentList;
         this.myClassifyAdapterOnItem = myClassifyAdapterOnItem;
@@ -48,14 +52,16 @@ public class ScanAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, final int i) {
-//        Log.e("onBindViewHolder",""+i);
-//        Glide.with(mContext).load(R.mipmap.img_fenlei_baicha1).into(((ViewHolder) viewHolder).iv_classify_img);
-//            ((ViewHolder) viewHolder).ll_all.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    myClassifyAdapterOnItem.OnItemClickListener("白毫银针");
-//                }
-//            });
+        Glide.with(mContext).load(RetrofitUtils.API+mList.get(i).getCover()).into(((ViewHolder) viewHolder).tv_img);
+        ((ViewHolder) viewHolder).tv_title.setText(mList.get(i).getTitle());
+        ((ViewHolder) viewHolder).tv_year.setText(mList.get(i).getCate_id());
+        ((ViewHolder) viewHolder).tv_money.setText("¥"+mList.get(i).getPrice());
+            ((ViewHolder) viewHolder).ll_all.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CommoditDetailsyActivity.actionStart(mContext,""+mList.get(i).getId(),mList.get(i).getCate_id());
+                }
+            });
     }
 
     @Override
@@ -71,12 +77,19 @@ public class ScanAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     private class ViewHolder extends RecyclerView.ViewHolder {
 
-//        ImageView iv_classify_img;
-//        LinearLayout ll_all;
+        ImageView tv_img;
+        LinearLayout ll_all;
+        TextView tv_title;
+        TextView tv_year;
+        TextView tv_money;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-//            iv_classify_img = itemView.findViewById(R.id.iv_classify_img);
-//            ll_all = itemView.findViewById(R.id.ll_all);
+            tv_img = itemView.findViewById(R.id.tv_img);
+            ll_all = itemView.findViewById(R.id.ll_all);
+
+            tv_title = itemView.findViewById(R.id.tv_title);
+            tv_year = itemView.findViewById(R.id.tv_year);
+            tv_money = itemView.findViewById(R.id.tv_money);
         }
     }
 

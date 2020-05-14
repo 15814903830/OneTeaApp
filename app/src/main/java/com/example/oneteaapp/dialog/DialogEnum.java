@@ -45,6 +45,8 @@ public enum DialogEnum {
     FIRST_LOGIN,//第一次登陆
 
 
+    QUXIAO,//取消
+
     ADD,//微信分享
 
     AEE,//朋友圈分享

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    tools:context=".activity.ShopingDetailsActivity">
+
+    <com.example.oneteaapp.view.StatusBarHeightView
+        android:layout_width="match_parent"
+        app:use_type="use_height"
+        android:background="#FFFFFF"
+        android:layout_height="wrap_content">
+    </com.example.oneteaapp.view.StatusBarHeightView>
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ll_return"
+            android:gravity="center_vertical"
+            android:layout_width="50dp"
+            android:layout_height="50dp">
+            <ImageView
+                android:src="@mipmap/fanghui"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <TextView
+            android:layout_marginRight="15dp"
+            android:id="@+id/tv_title"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            android:text="门店详情"
+            android:textColor="#333333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginRight="15dp"
+            android:id="@+id/tv_title2"
+            android:layout_gravity="right"
+            android:textSize="15sp"
+            android:text="编辑"
+            android:textColor="#333333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </android.support.v7.widget.Toolbar>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="240dp">
+        <ImageView
+            android:id="@+id/iv_head_img"
+            android:src="@mipmap/img_morentupianp"
+            android:scaleType="fitXY"
+            android:layout_width="match_parent"
+            android:layout_height="187dp" />
+        <FrameLayout
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+            <LinearLayout
+                android:background="#FFFFFF"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_gravity="bottom"
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_marginRight="20dp"
+                    android:text="未编辑店铺名称"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textColor="#333333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:src="@mipmap/img_dianpu_logo"
+                android:layout_marginLeft="15dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp" />
+        </FrameLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:background="#FFFFFF"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
+
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:src="@mipmap/icon_mendianxinxi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginLeft="15dp"
+                    android:textSize="15sp"
+                    android:textColor="#656666"
+                    android:text="营业时间"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="15dp"
+                    android:textSize="15sp"
+                    android:textColor="#333333"
+                    android:text="暂未设置"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_marginRight="48dp"
+            android:layout_marginLeft="35dp"
+            android:background="#E6E6E6"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+
+
+
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
+
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:src="@mipmap/icon_dizhi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginLeft="15dp"
+                    android:textSize="15sp"
+                    android:textColor="#656666"
+                    android:text="门店地址"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_dizhi"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="15dp"
+                    android:textSize="15sp"
+                    android:textColor="#333333"
+                    android:text="暂未设置"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:background="#F7F7F7"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_10"/>
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:textStyle="bold"
+                android:layout_marginLeft="15dp"
+                android:textSize="18sp"
+                android:textColor="#333333"
+                android:text="商家介绍"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_introduce_img"
+            android:scaleType="fitXY"
+            android:src="@mipmap/img_morentupianp"
+            android:layout_width="match_parent"
+            android:layout_height="187dp" />
+    </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.oneteaapp.R;
 import com.example.oneteaapp.base.DialogBase;
+import com.example.oneteaapp.base.GoodInfoBase;
 
 import java.util.List;
 
@@ -21,19 +22,19 @@ public class DialogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private Context mContext;
 
-    public List<DialogBase> getList() {
+    public  List<GoodInfoBase.DataBean.SukListsBean.SubBean> getList() {
         return mList;
     }
 
-    public void setList(List<DialogBase> list) {
+    public void setList( List<GoodInfoBase.DataBean.SukListsBean.SubBean> list) {
         mList = list;
     }
 
-    private List<DialogBase> mList;
+    private List<GoodInfoBase.DataBean.SukListsBean.SubBean> mList;
 
 
     private MyClassifyAdapterOnItem myClassifyAdapterOnItem;
-    public DialogAdapter(Context context, List<DialogBase> commmentList, MyClassifyAdapterOnItem myClassifyAdapterOnItem) {
+    public DialogAdapter(Context context, List<GoodInfoBase.DataBean.SukListsBean.SubBean> commmentList, MyClassifyAdapterOnItem myClassifyAdapterOnItem) {
         this.mContext = context;
         this.mList = commmentList;
         this.myClassifyAdapterOnItem = myClassifyAdapterOnItem;
@@ -51,27 +52,19 @@ public class DialogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder viewHolder, final int i) {
         Log.e("onBindViewHolder",""+i);
-        ((ViewHolder) viewHolder).tv_rank.setText(mList.get(i).getText());
+        ((ViewHolder) viewHolder).tv_rank.setText(mList.get(i).getName());
         if (mList.get(i).isaBoolean()){
-            ((ViewHolder) viewHolder).tv_rank.setSelected(false);
-            ((ViewHolder) viewHolder).tv_rank.setTextColor(mContext.getResources().getColor(R.color.coloryea2));
-        }else {
             ((ViewHolder) viewHolder).tv_rank.setSelected(true);
             ((ViewHolder) viewHolder).tv_rank.setTextColor(mContext.getResources().getColor(R.color.coloryear));
-        }
 
+        }else {
+            ((ViewHolder) viewHolder).tv_rank.setSelected(false);
+            ((ViewHolder) viewHolder).tv_rank.setTextColor(mContext.getResources().getColor(R.color.coloryea2));
+        }
             ((ViewHolder) viewHolder).tv_rank.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    myClassifyAdapterOnItem.OnItemClickListener(mList.get(i).getText());
-                    if (mList.get(i).isaBoolean()){
-                        ((ViewHolder) viewHolder).tv_rank.setSelected(true);
-                        ((ViewHolder) viewHolder).tv_rank.setTextColor(mContext.getResources().getColor(R.color.coloryear));
-
-                    }else {
-                            ((ViewHolder) viewHolder).tv_rank.setTextColor(mContext.getResources().getColor(R.color.coloryea2));
-                    }
-
+                    myClassifyAdapterOnItem.OnItemClickListener(mList.get(i).getName(),""+mList.get(i).getId());
                 }
             });
     }
@@ -83,7 +76,7 @@ public class DialogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
 
     public  interface MyClassifyAdapterOnItem{
-        void OnItemClickListener(String name);
+        void OnItemClickListener(String name,String id);
     }
 
 

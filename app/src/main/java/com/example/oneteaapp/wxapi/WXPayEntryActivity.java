@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.oneteaapp.activity.PaySucceedForResultActivity;
 import com.example.oneteaapp.wxapi.util.WeiXinConstants;
 import com.tencent.mm.opensdk.constants.ConstantsAPI;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
@@ -52,8 +53,9 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
         if (baseResp.getType() == ConstantsAPI.COMMAND_PAY_BY_WX) {
             Log.e("info", "onPayFinish,errCode=" + baseResp.errCode);
             if (baseResp.errCode == 0) {
-
+                PaySucceedForResultActivity.actionStart(WXPayEntryActivity.this,"1");
                 this.finish();
+                return;
             } else if (baseResp.errCode == -1) {
                 Toast.makeText(this,"配置错误", Toast.LENGTH_SHORT).show();
                 this.finish();
@@ -64,6 +66,8 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
         } else {
             Toast.makeText(this,baseResp.errStr, Toast.LENGTH_SHORT).show();
         }
+
+        PaySucceedForResultActivity.actionStart(WXPayEntryActivity.this,"2");
     }
 
     @Override

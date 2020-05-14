@@ -21,7 +21,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class QRCodeActivity extends BaseActivity {
-
     public static final String RESULT = "result";
     @BindView(R.id.tv_title_qr_code)
     TextView tvTitleQrCode;

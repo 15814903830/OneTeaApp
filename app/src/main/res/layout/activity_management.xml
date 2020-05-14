@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".activity.ManagementActivity">
+    <com.example.oneteaapp.view.StatusBarHeightView
+        android:layout_width="match_parent"
+        app:use_type="use_height"
+        android:background="#FFFFFF"
+        android:layout_height="wrap_content">
+    </com.example.oneteaapp.view.StatusBarHeightView>
+    <android.support.v7.widget.Toolbar
+        android:background="#FFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ll_return"
+            android:gravity="center_vertical"
+            android:layout_width="50dp"
+            android:layout_height="50dp">
+            <ImageView
+                android:src="@mipmap/fanghui"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            android:text="资料管理"
+            android:textColor="#333333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginRight="15dp"
+            android:id="@+id/tv_title2"
+            android:layout_gravity="right"
+            android:textSize="18sp"
+            android:text="保存"
+            android:textColor="#333333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/ll_hend1"
+        android:gravity="center_vertical"
+        android:background="#FFFFFF"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <TextView
+            android:text="门店图片"
+            android:layout_marginLeft="15dp"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:textColor="#FF666666"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_marginLeft="15dp"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/iv_head"
+                android:text="暂未上传"
+                android:layout_marginLeft="15dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:textColor="#FF333333"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/iv_head2"
+                android:layout_marginTop="5dp"
+                android:text="请联系客服添加上传"
+                android:layout_marginLeft="15dp"
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:textColor="#FF007BFF"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/iv_head3"
+            android:layout_marginRight="15dp"
+            android:src="@mipmap/youjianto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:background="#FFFFFF"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <TextView
+            android:text="店铺logo"
+            android:layout_marginLeft="15dp"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:textColor="#FF666666"
+            android:layout_height="wrap_content" />
+        <View
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ca_logog"
+            android:src="@mipmap/img_dianpu_logo"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+        <ImageView
+            android:padding="18sp"
+            android:src="@mipmap/youjianto"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:background="#FFFFFF"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <TextView
+            android:text="店铺名称"
+            android:layout_marginLeft="15dp"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:textColor="#FF666666"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/et_name"
+            android:hint="请输入店铺名称"
+            android:layout_marginHorizontal="15dp"
+            android:background="@null"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:background="#FFFFFF"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <TextView
+            android:text="营业时间"
+            android:layout_marginLeft="15dp"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:textColor="#FF666666"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:gravity="center"
+            android:id="@+id/et_start_time"
+            android:hint="开始时间"
+            android:layout_marginLeft="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:text="-"
+            android:layout_marginHorizontal="5dp"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:textColor="#FF666666"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:gravity="center"
+            android:id="@+id/et_on_time"
+            android:hint="结束时间"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <View
+        android:background="#FFE6E6E6"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"/>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <TextView
+            android:text="联系电话"
+            android:layout_marginLeft="15dp"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:textColor="#FF666666"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/et_phone"
+            android:hint="请输入联系电话"
+            android:layout_marginHorizontal="15dp"
+            android:background="@null"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:gravity="center_vertical"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <TextView
+            android:layout_marginTop="22dp"
+            android:layout_gravity="top"
+            android:text="门店地址"
+            android:layout_marginLeft="15dp"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:textColor="#FF666666"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/et_dizhi"
+            android:textSize="16sp"
+            android:layout_marginTop="15dp"
+            android:gravity="top"
+            android:hint="请输入门店地址"
+            android:layout_marginHorizontal="15dp"
+            android:background="@null"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_hend2"
+        android:gravity="center_vertical"
+        android:background="#FFFFFF"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <TextView
+            android:text="商家介绍"
+            android:layout_marginLeft="15dp"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:textColor="#FF666666"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_marginLeft="15dp"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/iv_head11"
+                android:text="暂未上传"
+                android:layout_marginLeft="15dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:textColor="#FF333333"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/iv_head22"
+                android:layout_marginTop="5dp"
+                android:text="请联系客服添加上传"
+                android:layout_marginLeft="15dp"
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:textColor="#FF007BFF"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/iv_head33"
+            android:layout_marginRight="15dp"
+            android:src="@mipmap/youjianto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+</LinearLayout>

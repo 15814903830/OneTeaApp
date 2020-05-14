@@ -92,7 +92,7 @@ public class PaymentDialog extends ComonDialog implements View.OnClickListener, 
                 name="微信支付";
                 break;
             case R.id.btn_send:
-                dBack.okListener(DialogEnum.SEND, name,"");
+                dBack.okListener(DialogEnum.ADD, name,"");
                 dismiss();
                 break;
 
@@ -101,7 +101,7 @@ public class PaymentDialog extends ComonDialog implements View.OnClickListener, 
     }
 
     @Override
-    public void OnItemClickListener(String name) {
+    public void OnItemClickListener(String name,String id) {
 
     }
 }

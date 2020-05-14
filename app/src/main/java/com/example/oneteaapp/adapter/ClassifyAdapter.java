@@ -13,7 +13,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.oneteaapp.R;
+import com.example.oneteaapp.base.ClassifyBase;
 import com.example.oneteaapp.base.HotProductBase;
+import com.example.oneteaapp.httputlis.utils.RetrofitUtils;
 
 import java.util.List;
 
@@ -21,21 +23,21 @@ public class ClassifyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private Context mContext;
 
-    public List<String> getList() {
+    public List<ClassifyBase.DataBean> getList() {
         return mList;
     }
 
-    public void setList(List<String> list) {
+    public void setList(List<ClassifyBase.DataBean> list) {
         mList = list;
     }
 
-    private List<String> mList;
+    private List<ClassifyBase.DataBean> mList;
 
 
     private MyClassifyAdapterOnItem myClassifyAdapterOnItem;
-    public ClassifyAdapter(Context context, List<String> commmentList,MyClassifyAdapterOnItem myClassifyAdapterOnItem) {
+    public ClassifyAdapter(Context context,List<ClassifyBase.DataBean> mList,MyClassifyAdapterOnItem myClassifyAdapterOnItem) {
         this.mContext = context;
-        this.mList = commmentList;
+        this.mList = mList;
         this.myClassifyAdapterOnItem = myClassifyAdapterOnItem;
 
     }
@@ -51,11 +53,11 @@ public class ClassifyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, final int i) {
         Log.e("onBindViewHolder",""+i);
-        Glide.with(mContext).load(R.mipmap.img_fenlei_baicha1).into(((ViewHolder) viewHolder).iv_classify_img);
+        Glide.with(mContext).load(RetrofitUtils.API+mList.get(i).getCover()).into(((ViewHolder) viewHolder).iv_classify_img);
             ((ViewHolder) viewHolder).ll_all.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    myClassifyAdapterOnItem.OnItemClickListener("白毫银针");
+                    myClassifyAdapterOnItem.OnItemClickListener(mList.get(i).getTitle(),""+mList.get(i).getId());
                 }
             });
     }
@@ -67,7 +69,7 @@ public class ClassifyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
 
     public  interface MyClassifyAdapterOnItem{
-        void OnItemClickListener(String name);
+        void OnItemClickListener(String name,String id);
     }
 
 

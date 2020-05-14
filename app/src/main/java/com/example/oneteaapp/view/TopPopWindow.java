@@ -15,6 +15,7 @@ import com.example.oneteaapp.R;
 import com.example.oneteaapp.activity.ClassifyParticularsActivity;
 import com.example.oneteaapp.adapter.ClassifyParticularsAdapter;
 import com.example.oneteaapp.adapter.PopWindowAdapter;
+import com.example.oneteaapp.base.ClassifyBase;
 
 import java.util.List;
 
@@ -27,8 +28,8 @@ public class TopPopWindow extends PopupWindow implements PopWindowAdapter.MyPopW
     private View mView;
     private TopPoWindowItme topPoWindowItme;
 
-    public TopPopWindow(Context context,TopPoWindowItme topPoWindowItme,
-                        int paramInt1, int paramInt2, List<String> listyear,String title) {
+    public TopPopWindow(Context context, TopPoWindowItme topPoWindowItme,
+                        int paramInt1, int paramInt2, List<ClassifyBase.DataBean> listyear, String title) {
         this.topPoWindowItme=topPoWindowItme;
         mView = LayoutInflater.from(context).inflate(R.layout.popwinow_layout, null);
         textView=mView.findViewById(R.id.tv_year);
@@ -52,12 +53,12 @@ public class TopPopWindow extends PopupWindow implements PopWindowAdapter.MyPopW
 
 
     public interface TopPoWindowItme {
-        void TopPoWindowItme(String title);
+        void TopPoWindowItme(String name,String id);
     }
 
 
     @Override
-    public void OnItemClickListener(String name) {
-        topPoWindowItme.TopPoWindowItme(name);
+    public void OnItemClickListener(String name,String id) {
+        topPoWindowItme.TopPoWindowItme(name,id);
     }
 }

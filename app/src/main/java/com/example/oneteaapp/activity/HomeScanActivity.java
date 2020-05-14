@@ -20,6 +20,9 @@ import android.widget.Toast;
 import com.example.oneteaapp.R;
 import com.example.oneteaapp.adapter.ScanAdapter;
 import com.example.oneteaapp.adapter.ScanRecordAdapter;
+import com.example.oneteaapp.base.HomeDateBase;
+import com.example.oneteaapp.httputlis.network.NetWorks;
+import com.example.oneteaapp.utils.KeyBoardUtils;
 import com.example.oneteaapp.view.flowlayout.FlowLayout;
 import com.example.oneteaapp.view.flowlayout.TagAdapter;
 import com.example.oneteaapp.view.flowlayout.TagFlowLayout;
@@ -36,6 +39,7 @@ import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
+import rx.Observer;
 
 /**
  * 主页搜索
@@ -73,22 +77,35 @@ public class HomeScanActivity extends BaseActivity implements ScanAdapter.MyClas
         //默认账号
         String username = "007";
         mRecordsDao = new RecordsDao(this, username);
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("");
-        list.add("");
-        list.add("");
-        list.add("");
-        list.add("");
-        LinearLayoutManager linearLayoutManager3 = new LinearLayoutManager(HomeScanActivity.this);
-        rvScan2.setLayoutManager(linearLayoutManager3);
-        ScanAdapter classifyAdapter = new ScanAdapter(HomeScanActivity.this, list, this);
-        rvScan2.setAdapter(classifyAdapter);
-
         initData();
         setOnClick();
 
 
+    }
+
+    private void scandata(String title) {
+        NetWorks.GetScanLists(title, new Observer<HomeDateBase>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(HomeDateBase homeDateBase) {
+                if (homeDateBase.getCode()==1){
+                    LinearLayoutManager linearLayoutManager3 = new LinearLayoutManager(HomeScanActivity.this);
+                    rvScan2.setLayoutManager(linearLayoutManager3);
+                    ScanAdapter classifyAdapter = new ScanAdapter(HomeScanActivity.this, homeDateBase.getData().getLists(), HomeScanActivity.this);
+                    rvScan2.setAdapter(classifyAdapter);
+                }
+
+            }
+        });
     }
 
     private void setOnClick() {
@@ -96,8 +113,15 @@ public class HomeScanActivity extends BaseActivity implements ScanAdapter.MyClas
         etScanText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                Toast.makeText(HomeScanActivity.this, etScanText.getText().toString(), Toast.LENGTH_SHORT).show();
-                return false;
+                                String record = etScanText.getText().toString();
+                if (!TextUtils.isEmpty(record)) {
+                    //添加数据
+                    mRecordsDao.addRecords(record);
+                }
+                scandata(record);
+                etScanText.setText("");
+                KeyBoardUtils.closeKeybord(etScanText,HomeScanActivity.this);
+                return true;
             }
         });
         //创建历史标签适配器
@@ -122,6 +146,7 @@ public class HomeScanActivity extends BaseActivity implements ScanAdapter.MyClas
                 //将获取到的字符串传到搜索结果界面,点击后搜索对应条目内容
                 etScanText.setText(recordList.get(position));
                 etScanText.setSelection(etScanText.length());
+                scandata(recordList.get(position));
             }
         });
         //删除某个条目
@@ -138,21 +163,6 @@ public class HomeScanActivity extends BaseActivity implements ScanAdapter.MyClas
             }
         });
 
-
-
-//        //view加载完成时回调
-//        tagFlowLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-//            @Override
-//            public void onGlobalLayout() {
-//                boolean isOverFlow = tagFlowLayout.isOverFlow();
-//                boolean isLimit = tagFlowLayout.isLimit();
-//                if (isLimit && isOverFlow) {
-//                    moreArrow.setVisibility(View.VISIBLE);
-//                } else {
-//                    moreArrow.setVisibility(View.GONE);
-//                }
-//            }
-//        });
 
 
         //清除所有记录
@@ -180,10 +190,6 @@ public class HomeScanActivity extends BaseActivity implements ScanAdapter.MyClas
         tvCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                String record = etScanText.getText().toString();
-//                if (!TextUtils.isEmpty(record)) {
-//                    //添加数据
-//                    mRecordsDao.addRecords(record);
                 finish();
 
             }

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:gravity="center_vertical"
+            android:layout_height="81dp">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+    <LinearLayout
+        android:id="@+id/ll_xuznzhe"
+        android:gravity="center_vertical"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/iv_xuanzhe"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/xuanzhe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_name_phone"
+            android:text="王殊桥  138****3821"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/tv_mor"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:paddingHorizontal="5dp"
+                android:textSize="10sp"
+                android:textColor="#FFFFFF"
+                android:text="默认"
+                android:background="@drawable/tv_mor_bg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_dizhi"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="王殊桥  138****3821"
+            android:textSize="13sp"
+            android:textColor="#666666"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    </LinearLayout>
+    <ImageView
+        android:layout_gravity="center_vertical"
+        android:id="@+id/iv_amend"
+        android:padding="@dimen/sp_16"
+        android:src="@mipmap/icon_edit"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+    </LinearLayout>
+    <View
+        android:background="#E6E6E6"
+        android:layout_width="wrap_content"
+        android:layout_height="0.5dp"/>
+</LinearLayout>
